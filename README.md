@@ -1,6 +1,17 @@
-# BCL_WebScrape
+There are two scripts which do the same thing but in different ways.
+- BCLWebScrape_Insomnia.py (more efficient method)
+- BCL_WebScrape.py
 
-This script aims to answers the age old question of, "which alcohol is most cost effective". i.e. What is the cost per litre ($/l).
+Both scripts aim to answer the age old question of, "which alcohol is most cost effective". i.e. What is the cost per litre ($/l).
+
+# BCLWebScrape_Insomnia.py 
+
+You only need to install the packages in the Notebook.
+I also attached the .csv so you do not need to run the code for that.
+The Notebook contains additional analysis. e.g. using geopy to plot add the lattitude and longitude of drink locations.
+An example plot is **plot.html**, it is possible to view the plot if you download it onto you computer and open it with your favourie web browser.
+
+# BCL_WebScrape.py
 
 ## Running the script
 
