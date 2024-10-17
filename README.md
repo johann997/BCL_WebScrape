@@ -1,17 +1,50 @@
-There are two scripts which do the same thing but in different ways.
-- BCLWebScrape_Insomnia.py (more efficient method)
-- BCL_WebScrape.py
+There are two folders:
+- `src/BCLWebScrape` (efficient web scrape and ML analysis)
+- `_old` (slow webscrape no analysis)
 
-Both scripts aim to answer the age old question of, "which alcohol is most cost effective". i.e. What is the cost per litre ($/l).
+The scripts in `_old` were originally created to answer the age old question of, "which alcohol is most cost effective". i.e. What is the cost per litre ($/l).
 
-# BCLWebScrape_Insomnia.py 
+However, I ended up coming back to this project with improved web scraping capabilities (thanks to YouTube and the Insomnia service) and found that I could collect much more information. So I turned this into an ML project 
+
+# src/BCL_WebScrape/CollectData.ipynb
+This notebook webscrapes https://www.bcliquorstores.com and saves the data to a .csv
 
 You only need to install the packages in the Notebook.
-I also attached the .csv so you do not need to run the code for that.
-The Notebook contains additional analysis. e.g. using geopy to plot add the lattitude and longitude of drink locations.
-An example plot is **plot.html**, it is possible to view the plot if you download it onto you computer and open it with your favourie web browser.
+I also attached the scraped .csv `src/BCL_WebScrape/data/web-scraped-result.csv` so you do not need to run the scraping code if it does not work for you.
+The Notebook contains some feature engineering, e.g. using geopy to plot add the lattitude and longitude of drink locations.
+An example plot `src/BCL_WebScrape/figures/BCL-world-map.html` shows the number of BLC product from each country on a world map. You can view this in your favourie web browser. :)
 
-# BCL_WebScrape.py
+
+# src/BCL_WebScrape/Analysis.ipynb
+This data loads the saved .csv and does some analysis.
+The analysis and thought process is laid out in markdown textblocks through the notebook. 
+
+Overall, the business question was to see which products receive the highest ratings. This would help inform how the inventory should be managed for the next year to improve the overall rating of drinks available. Higher rating -> greater customer satisfaction -> perhaps more footfall in store.
+
+I tried regression with price, alohol content, and drink profile which was determined by using NLP to cluster drink types using a text description of the drink. </br>
+I also tried multi-class classification by breaking down the ratings into 3 categories to see if simplifying the problem would obtian useful results. 
+
+Different tools, techniques and evaluation metrics were used. 
+- Hierarchical clustering using a dendrogram
+- Grid search
+- PCA
+- Regression models used
+  1. linear regression
+  2. random forest regression (`ensemble learning : bagging`)
+  3. gradient boosting (`ensemble learning : boosting`)
+- Classification models used
+  1. random forest (`ensemble learning : bagging`)
+- Confusion matrix
+- Classification report
+- ROC curve
+- Learning curve
+
+Predicting a drinks rating proved to be difficult. There are many TODO's laid out which I will get back to at some point. :)
+
+---
+---
+
+# _old/BCLWebScraping.py
 
 ## Running the script
 
